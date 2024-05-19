@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- Add Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	
+<div class="container">
+	<h2 class="text-center mt-5" style="color: green;">GeeksforGeeks</h2>
+	<!-- Create a container div for content -->
+	<table class="table table-striped mt-4">
+		<thead>
+			<tr>
+				<!-- Table header row with column headings -->
+				<th>#</th>
+				<th>Category</th>
+				<th>Image</th>
+				<th>Recipe Name</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- Loop through the 'recipes' list provided by Django -->
+			{% for recipe in recipes %}
+			<tr>
+				<!-- Table row for each recipe -->
+				<td>{{forloop.counter}}</td>
+				<!-- Display the recipe's category name -->
+				<td>{{recipe.category.category_name}}</td>
+				<!-- Display the recipe's image with a defined height -->
+				<td><img src="{{recipe.image}}" style="height: 50px;" class="img-fluid img-responsive" alt=""> </td>
+				<!-- Display the recipe name -->
+				<td>{{recipe.recipe_name}}</td>
+				<!-- Create a button to view the recipe with a link to the 'view_recipe' URL -->
+				<td><a href="{% url 'view_recipe' recipe.id %}" class="btn btn-info">View</a> </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+	<!-- Add Bootstrap JavaScript (Optional, if needed for certain Bootstrap features) -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
